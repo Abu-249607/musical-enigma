@@ -1,0 +1,13 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+		productName = TherapistMe;
+		productReference = TherapistMe.app;
+		productType = "com.apple.product-type.application";
+	};
+	rootObject = "Project object";
+}
