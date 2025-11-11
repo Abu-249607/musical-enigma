@@ -39,7 +39,7 @@ struct WelcomeView: View {
                 .font(.system(size: 80))
                 .foregroundColor(.blue)
             
-            Text("Welcome to Therapist.Me")
+            Text("Welcome to Serenity")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)

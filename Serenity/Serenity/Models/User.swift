@@ -289,3 +289,19 @@ struct ConsentPreferences: Codable {
         privacyNotice && termsOfService && hipaaAuthorization
     }
 }
+
+// MARK: - User Extensions
+
+extension User {
+    /// Full name for display
+    var fullName: String {
+        "\(firstName) \(lastName)"
+    }
+
+    /// User initials for avatar
+    var initials: String {
+        let first = firstName.prefix(1).uppercased()
+        let last = lastName.prefix(1).uppercased()
+        return "\(first)\(last)"
+    }
+}

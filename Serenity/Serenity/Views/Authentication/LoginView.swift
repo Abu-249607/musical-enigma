@@ -18,7 +18,7 @@ struct LoginView: View {
                 .font(.system(size: 60))
                 .foregroundColor(.blue)
             
-            Text("Therapist.Me")
+            Text("Serenity")
                 .font(.largeTitle)
                 .fontWeight(.bold)
             
@@ -104,7 +104,7 @@ struct LoginView: View {
             do {
                 if let biometric = BiometricAuth.shared {
                     let success = try await biometric.authenticate(
-                        reason: "Log in to Therapist.Me"
+                        reason: "Log in to Serenity"
                     )
                     
                     if success {
