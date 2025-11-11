@@ -1,4 +1,4 @@
-# Security Architecture - Therapist.Me
+# Security Architecture - Serenity
 
 **Version:** 1.0
 **Last Updated:** November 10, 2025
@@ -25,7 +25,7 @@
 
 ### 1.1 Design Principles
 
-The Therapist.Me security architecture is built on the following principles:
+The Serenity security architecture is built on the following principles:
 
 - **Defense in Depth**: Multiple layers of security controls
 - **Zero Trust**: Verify every access request
@@ -769,7 +769,7 @@ class CertificatePinner {
     // HIPAA Compliance: Prevent MITM attacks via certificate pinning
 
     private let pinnedPublicKeys: [String: [String]] = [
-        "api.therapist-me.com": [
+        "api.serenity.com": [
             "sha256/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
             "sha256/BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB=" // Backup key
         ]
@@ -816,7 +816,7 @@ class CoreDataManager {
     // HIPAA Compliance: Encrypted persistent storage for all PHI
 
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "TherapistMe")
+        let container = NSPersistentContainer(name: "Serenity")
 
         // Enable persistent history tracking for sync
         let description = container.persistentStoreDescriptions.first
@@ -824,7 +824,7 @@ class CoreDataManager {
 
         // Enable CloudKit sync (encrypted)
         description?.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(
-            containerIdentifier: "iCloud.com.therapistme.app"
+            containerIdentifier: "iCloud.com.serenityapp.app"
         )
 
         container.loadPersistentStores { description, error in

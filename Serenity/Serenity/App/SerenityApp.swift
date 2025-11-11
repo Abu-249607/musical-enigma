@@ -5,7 +5,7 @@ import SwiftUI
 // Implements §164.312(b) - Audit Controls
 
 @main
-struct TherapistMeApp: App {
+struct SerenityApp: App {
     @StateObject private var sessionManager = SessionManager.shared
     @StateObject private var appState = AppState.shared
 

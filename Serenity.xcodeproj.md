@@ -1,4 +1,4 @@
-# How to Preview the Therapist.Me App
+# How to Preview the Serenity App
 
 ## Quick Start (Mac with Xcode Required)
 
@@ -15,15 +15,15 @@ git checkout claude/therapist-me-secure-mvp-011CUyXN8XgLJ3cm7RG7tcUo
    - Open Xcode
    - File → New → Project
    - Choose "iOS App"
-   - Name: `TherapistMe`
+   - Name: `Serenity`
    - Interface: SwiftUI
    - Language: Swift
    - Minimum iOS: 16.0
 
 3. **Add Source Files:**
-   - Drag all files from `TherapistMe/TherapistMe/` into your Xcode project
+   - Drag all files from `Serenity/Serenity/` into your Xcode project
    - Make sure "Copy items if needed" is checked
-   - Add to target: TherapistMe
+   - Add to target: Serenity
 
 4. **Add Required Frameworks:**
    - Select project → Target → Frameworks, Libraries, and Embedded Content

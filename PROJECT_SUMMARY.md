@@ -1,4 +1,4 @@
-# Therapist.Me - Project Implementation Summary
+# Serenity - Project Implementation Summary
 
 **Date**: November 10, 2025
 **Status**: ✅ MVP Complete
@@ -161,10 +161,10 @@ All PHI models include:
 ## 📁 Project Structure
 
 ```
-TherapistMe/
-├── TherapistMe/
+Serenity/
+├── Serenity/
 │   ├── App/
-│   │   └── TherapistMeApp.swift              # Entry point
+│   │   └── SerenityApp.swift              # Entry point
 │   ├── Models/
 │   │   ├── User.swift                         # User with RBAC
 │   │   ├── JournalEntry.swift                 # Encrypted
@@ -348,9 +348,9 @@ git checkout claude/therapist-me-secure-mvp-011CUyXN8XgLJ3cm7RG7tcUo
 
 2. **Create Xcode Project**
 ```bash
-cd TherapistMe
+cd Serenity
 # Create new iOS App project in Xcode
-# - Name: TherapistMe
+# - Name: Serenity
 # - Interface: SwiftUI
 # - Language: Swift
 # - Minimum iOS: 16.0
@@ -369,7 +369,7 @@ cd TherapistMe
 ```bash
 # In Xcode: Cmd + R
 # Or via command line:
-xcodebuild -scheme TherapistMe -destination 'platform=iOS Simulator,name=iPhone 15 Pro'
+xcodebuild -scheme Serenity -destination 'platform=iOS Simulator,name=iPhone 15 Pro'
 ```
 
 ---

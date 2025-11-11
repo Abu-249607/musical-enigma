@@ -1,4 +1,4 @@
-# Therapist.Me - HIPAA-Compliant Addiction Recovery App
+# Serenity - HIPAA-Compliant Addiction Recovery App
 
 ![Platform](https://img.shields.io/badge/platform-iOS%2016.0%2B-blue)
 ![Swift](https://img.shields.io/badge/Swift-5.9-orange)
@@ -82,9 +82,9 @@ This application is built with **HIPAA compliance** as a foundational requiremen
 ### Project Structure
 
 ```
-TherapistMe/
+Serenity/
 ├── App/
-│   └── TherapistMeApp.swift              # App entry point with security checks
+│   └── SerenityApp.swift              # App entry point with security checks
 ├── Models/
 │   ├── User.swift                         # User model with RBAC
 │   ├── JournalEntry.swift                 # Encrypted journal entry
@@ -162,15 +162,15 @@ TherapistMe/
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/yourusername/therapist-me.git
-cd therapist-me
+git clone https://github.com/yourusername/serenity.git
+cd serenity
 ```
 
 2. **Open in Xcode**
 
 ```bash
-cd TherapistMe
-open TherapistMe.xcodeproj
+cd Serenity
+open Serenity.xcodeproj
 ```
 
 3. **Configure code signing**
@@ -267,10 +267,10 @@ SessionManager.shared.updateActivity()
 
 ```bash
 # Run all tests
-xcodebuild test -scheme TherapistMe -destination 'platform=iOS Simulator,name=iPhone 15 Pro'
+xcodebuild test -scheme Serenity -destination 'platform=iOS Simulator,name=iPhone 15 Pro'
 
 # Run specific test suite
-xcodebuild test -scheme TherapistMe -only-testing:TherapistMeTests/EncryptionTests
+xcodebuild test -scheme Serenity -only-testing:SerenityTests/EncryptionTests
 ```
 
 ### Unit Tests

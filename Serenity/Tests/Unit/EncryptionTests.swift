@@ -1,5 +1,5 @@
 import XCTest
-@testable import TherapistMe
+@testable import Serenity
 
 // HIPAA Compliance: Test encryption service
 // Validates AES-256-GCM encryption implementation

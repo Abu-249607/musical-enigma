@@ -1,4 +1,4 @@
-# Implementation Roadmap - Therapist.Me
+# Implementation Roadmap - Serenity
 
 **Version:** 1.0
 **Last Updated:** November 10, 2025
@@ -23,7 +23,7 @@
 
 ### 1.1 Project Overview
 
-**Project Name:** Therapist.Me - HIPAA-Compliant Addiction Recovery Platform
+**Project Name:** Serenity - HIPAA-Compliant Addiction Recovery Platform
 **Platform:** iOS (SwiftUI)
 **Timeline:** 12-16 weeks to MVP
 **Team Size:** 5-8 members
@@ -394,7 +394,7 @@
 
 **Tasks:**
 - [ ] Integrate video call provider (Zoom Health, Doxy.me)
-- [ ] Implement `TherapistMessagingService`
+- [ ] Implement `SerenityssagingService`
 - [ ] Add appointment scheduling
 - [ ] Implement `TherapistDirectoryView`
 
@@ -771,7 +771,7 @@ main (production)
 
 ## 14. Conclusion
 
-This implementation roadmap provides a clear path to building a HIPAA-compliant, secure, and user-friendly addiction recovery platform. By following this phased approach with security and compliance at the forefront, Therapist.Me will deliver a trusted solution for individuals seeking recovery support.
+This implementation roadmap provides a clear path to building a HIPAA-compliant, secure, and user-friendly addiction recovery platform. By following this phased approach with security and compliance at the forefront, Serenity will deliver a trusted solution for individuals seeking recovery support.
 
 **Next Steps:**
 1. Assemble development team

@@ -13,9 +13,9 @@
 
 Use these exact settings:
 
-- **Product Name:** `TherapistMe`
+- **Product Name:** `Serenity`
 - **Team:** (Select your team)
-- **Organization Identifier:** `com.therapistme` (or your own)
+- **Organization Identifier:** `com.serenityapp` (or your own)
 - **Interface:** **SwiftUI**
 - **Language:** **Swift**
 - **Storage:** **None** (we're using CoreData manually)
@@ -27,7 +27,7 @@ Click **Next** and save the project **outside** this repository (e.g., on your D
 
 **Method A: Drag & Drop (Easiest)**
 
-1. In Finder, navigate to this repository: `TherapistMe/TherapistMe/`
+1. In Finder, navigate to this repository: `Serenity/Serenity/`
 2. Select ALL these folders:
    - `App/`
    - `Models/`
@@ -37,18 +37,18 @@ Click **Next** and save the project **outside** this repository (e.g., on your D
 4. In the dialog:
    - ✅ Check **"Copy items if needed"**
    - ✅ Select **"Create groups"**
-   - ✅ Add to target: **TherapistMe**
+   - ✅ Add to target: **Serenity**
 5. Click **Finish**
 
 **Method B: Manual (More Control)**
 
-In Xcode Navigator, right-click on the TherapistMe folder → **Add Files to "TherapistMe"...**
+In Xcode Navigator, right-click on the Serenity folder → **Add Files to "Serenity"...**
 
 Add these files in order:
 
 ```
 App/
-├── TherapistMeApp.swift
+├── SerenityApp.swift
 
 Models/
 ├── User.swift
@@ -85,7 +85,7 @@ Views/
 
 ### Step 4: Configure Info.plist
 
-1. In Xcode Navigator, select **Info.plist** (or click on TherapistMe target → Info tab)
+1. In Xcode Navigator, select **Info.plist** (or click on Serenity target → Info tab)
 2. Add these privacy descriptions:
 
 **Right-click in Info.plist → Add Row:**
@@ -97,7 +97,7 @@ Views/
 ### Step 5: Enable Capabilities
 
 1. Select your project in Navigator
-2. Select **TherapistMe** target
+2. Select **Serenity** target
 3. Click **Signing & Capabilities** tab
 4. Click **"+ Capability"**
 5. Add: **Keychain Sharing**
@@ -107,7 +107,7 @@ Views/
 You'll need to delete the default files Xcode created:
 
 1. **Delete** `ContentView.swift` (we created our own views)
-2. In `TherapistMeApp.swift` that Xcode created, **replace** its contents with our version
+2. In `SerenityApp.swift` that Xcode created, **replace** its contents with our version
 
 ### Step 7: Build & Run
 
@@ -122,7 +122,7 @@ You'll need to delete the default files Xcode created:
 
 When you run the app, you'll see:
 
-1. **Welcome Screen** - "Welcome to Therapist.Me" with heart icon
+1. **Welcome Screen** - "Welcome to Serenity" with heart icon
 2. **Privacy Notice** - HIPAA Notice of Privacy Practices
 3. **Consent Screen** - Required and optional consents
 4. **Registration** - Create account with strong password
@@ -139,7 +139,7 @@ When you run the app, you'll see:
 ### Issue: "Missing required module 'CryptoKit'"
 
 **Solution:** CryptoKit is built-in for iOS 16+. Make sure deployment target is set to iOS 16.0:
-- Select project → TherapistMe target → General → Minimum Deployments → iOS 16.0
+- Select project → Serenity target → General → Minimum Deployments → iOS 16.0
 
 ### Issue: "Use of undeclared type 'AuditLogger'"
 

@@ -1,4 +1,4 @@
-# Security Compliance Review - Therapist.Me
+# Security Compliance Review - Serenity
 ## HIPAA Compliance Security Analysis
 
 **Document Version:** 1.0
@@ -9,7 +9,7 @@
 
 ## Executive Summary
 
-This document provides a comprehensive security compliance review for the Therapist.Me addiction recovery application. The app handles Protected Health Information (PHI) and must comply with HIPAA Privacy Rule, Security Rule, and Breach Notification Rule.
+This document provides a comprehensive security compliance review for the Serenity addiction recovery application. The app handles Protected Health Information (PHI) and must comply with HIPAA Privacy Rule, Security Rule, and Breach Notification Rule.
 
 ---
 
@@ -303,7 +303,7 @@ CryptoKit.AES.GCM (256-bit keys)
 
 ## 13. Attestation
 
-This security compliance review has been conducted in accordance with HIPAA Security Rule requirements. The Therapist.Me application implements appropriate administrative, physical, and technical safeguards to protect the confidentiality, integrity, and availability of electronic protected health information (ePHI).
+This security compliance review has been conducted in accordance with HIPAA Security Rule requirements. The Serenity application implements appropriate administrative, physical, and technical safeguards to protect the confidentiality, integrity, and availability of electronic protected health information (ePHI).
 
 **Prepared By:** Security Engineering Team
 **Review Date:** November 10, 2025

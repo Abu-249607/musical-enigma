@@ -1,14 +1,14 @@
-# HIPAA Compliance Checklist - Therapist.Me
+# HIPAA Compliance Checklist - Serenity
 
 **Version:** 1.0
 **Last Updated:** November 10, 2025
-**Application:** Therapist.Me - Addiction Recovery Platform
+**Application:** Serenity - Addiction Recovery Platform
 
 ---
 
 ## Overview
 
-This checklist ensures compliance with the Health Insurance Portability and Accountability Act (HIPAA) Security Rule (45 CFR § 164.308, 164.310, 164.312) for the Therapist.Me iOS application.
+This checklist ensures compliance with the Health Insurance Portability and Accountability Act (HIPAA) Security Rule (45 CFR § 164.308, 164.310, 164.312) for the Serenity iOS application.
 
 **Legend:**
 - ✅ **Implemented** - Feature fully implemented and tested

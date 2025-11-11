@@ -1,7 +1,7 @@
-# Xcode File Location Guide - Therapist.Me
+# Xcode File Location Guide - Serenity
 
 **Your Current Location:** `/home/user/musical-enigma`
-**Swift Files Location:** `TherapistMe/TherapistMe/`
+**Swift Files Location:** `Serenity/Serenity/`
 
 ---
 
@@ -12,12 +12,12 @@ Here's EXACTLY where all 19 Swift files are located:
 ```
 musical-enigma/                              👈 YOU ARE HERE
 │
-├── TherapistMe/                             👈 MAIN FOLDER
+├── Serenity/                             👈 MAIN FOLDER
 │   │
-│   ├── TherapistMe/                         👈 APP SOURCE CODE FOLDER
+│   ├── Serenity/                         👈 APP SOURCE CODE FOLDER
 │   │   │
 │   │   ├── App/
-│   │   │   └── TherapistMeApp.swift         ✅ Main app entry point
+│   │   │   └── SerenityApp.swift         ✅ Main app entry point
 │   │   │
 │   │   ├── Models/
 │   │   │   ├── User.swift                   ✅ User profile & consent
@@ -84,23 +84,23 @@ musical-enigma/                              👈 YOU ARE HERE
    - Open Xcode
    - File → New → Project
    - Choose **iOS** → **App**
-   - Product Name: `TherapistMe`
+   - Product Name: `Serenity`
    - Interface: **SwiftUI**
    - Language: **Swift**
    - Save it **outside** this repository folder (e.g., on Desktop)
 
 4. **Add All Source Files:**
-   - In Finder, navigate to: `musical-enigma/TherapistMe/TherapistMe/`
+   - In Finder, navigate to: `musical-enigma/Serenity/Serenity/`
    - Select ALL folders inside (`App/`, `Models/`, `Services/`, `Views/`)
    - **Drag and drop** them into Xcode's Navigator (left sidebar)
    - When prompted:
      - ✅ Check "Copy items if needed"
      - ✅ Select "Create groups"
-     - ✅ Add to target: TherapistMe
+     - ✅ Add to target: Serenity
    - Click Finish
 
 5. **Add Tests:**
-   - In Finder, go to: `musical-enigma/TherapistMe/Tests/`
+   - In Finder, go to: `musical-enigma/Serenity/Tests/`
    - Drag the `Unit` folder into Xcode's Tests folder
 
 6. **Delete Xcode's Default Files:**
@@ -118,45 +118,45 @@ If you want to add files one by one, here's the order:
 
 **Step 1: Add App Entry Point**
 ```
-musical-enigma/TherapistMe/TherapistMe/App/TherapistMeApp.swift
+musical-enigma/Serenity/Serenity/App/SerenityApp.swift
 ```
 
 **Step 2: Add All Models (4 files)**
 ```
-musical-enigma/TherapistMe/TherapistMe/Models/User.swift
-musical-enigma/TherapistMe/TherapistMe/Models/JournalEntry.swift
-musical-enigma/TherapistMe/TherapistMe/Models/MoodEntry.swift
-musical-enigma/TherapistMe/TherapistMe/Models/CravingLog.swift
+musical-enigma/Serenity/Serenity/Models/User.swift
+musical-enigma/Serenity/Serenity/Models/JournalEntry.swift
+musical-enigma/Serenity/Serenity/Models/MoodEntry.swift
+musical-enigma/Serenity/Serenity/Models/CravingLog.swift
 ```
 
 **Step 3: Add Security Services (6 files)**
 ```
-musical-enigma/TherapistMe/TherapistMe/Services/Encryption/EncryptionService.swift
-musical-enigma/TherapistMe/TherapistMe/Services/Encryption/KeychainManager.swift
-musical-enigma/TherapistMe/TherapistMe/Services/Audit/AuditLogger.swift
-musical-enigma/TherapistMe/TherapistMe/Services/Security/SecurityValidator.swift
-musical-enigma/TherapistMe/TherapistMe/Services/Security/IntegrityValidator.swift
-musical-enigma/TherapistMe/TherapistMe/Services/Session/SessionManager.swift
+musical-enigma/Serenity/Serenity/Services/Encryption/EncryptionService.swift
+musical-enigma/Serenity/Serenity/Services/Encryption/KeychainManager.swift
+musical-enigma/Serenity/Serenity/Services/Audit/AuditLogger.swift
+musical-enigma/Serenity/Serenity/Services/Security/SecurityValidator.swift
+musical-enigma/Serenity/Serenity/Services/Security/IntegrityValidator.swift
+musical-enigma/Serenity/Serenity/Services/Session/SessionManager.swift
 ```
 
 **Step 4: Add Authentication Services (4 files)**
 ```
-musical-enigma/TherapistMe/TherapistMe/Services/Authentication/AuthenticationService.swift
-musical-enigma/TherapistMe/TherapistMe/Services/Authentication/PasswordValidator.swift
-musical-enigma/TherapistMe/TherapistMe/Services/Authentication/BiometricAuth.swift
-musical-enigma/TherapistMe/TherapistMe/Services/Authorization/AccessControl.swift
+musical-enigma/Serenity/Serenity/Services/Authentication/AuthenticationService.swift
+musical-enigma/Serenity/Serenity/Services/Authentication/PasswordValidator.swift
+musical-enigma/Serenity/Serenity/Services/Authentication/BiometricAuth.swift
+musical-enigma/Serenity/Serenity/Services/Authorization/AccessControl.swift
 ```
 
 **Step 5: Add Views (3 files)**
 ```
-musical-enigma/TherapistMe/TherapistMe/Views/Onboarding/OnboardingFlowView.swift
-musical-enigma/TherapistMe/TherapistMe/Views/Authentication/LoginView.swift
-musical-enigma/TherapistMe/TherapistMe/Views/Dashboard/DashboardView.swift
+musical-enigma/Serenity/Serenity/Views/Onboarding/OnboardingFlowView.swift
+musical-enigma/Serenity/Serenity/Views/Authentication/LoginView.swift
+musical-enigma/Serenity/Serenity/Views/Dashboard/DashboardView.swift
 ```
 
 **Step 6: Add Tests (1 file)**
 ```
-musical-enigma/TherapistMe/Tests/Unit/EncryptionTests.swift
+musical-enigma/Serenity/Tests/Unit/EncryptionTests.swift
 ```
 
 ---
@@ -166,7 +166,7 @@ musical-enigma/TherapistMe/Tests/Unit/EncryptionTests.swift
 After adding files to Xcode, verify you have all 19 files:
 
 ### App (1 file)
-- [ ] TherapistMeApp.swift
+- [ ] SerenityApp.swift
 
 ### Models (4 files)
 - [ ] User.swift
@@ -217,7 +217,7 @@ After adding files to Xcode, verify you have all 19 files:
 After adding all files, add this to Info.plist:
 
 1. Select your project in Xcode Navigator
-2. Select the TherapistMe target
+2. Select the Serenity target
 3. Go to the Info tab
 4. Add a new row:
    - **Key:** `Privacy - Face ID Usage Description`
@@ -229,7 +229,7 @@ After adding all files, add this to Info.plist:
 ## ⚙️ Enable Capabilities
 
 1. Select your project in Xcode Navigator
-2. Select the TherapistMe target
+2. Select the Serenity target
 3. Go to **Signing & Capabilities** tab
 4. Click **+ Capability**
 5. Add: **Keychain Sharing**
@@ -243,13 +243,13 @@ Once you've cloned/downloaded the repository to your Mac:
 **If cloned via git:**
 ```bash
 cd ~/wherever-you-cloned/musical-enigma
-ls TherapistMe/TherapistMe/
+ls Serenity/Serenity/
 ```
 
 **If downloaded as ZIP:**
 ```
 1. Unzip musical-enigma.zip
-2. Navigate to: musical-enigma/TherapistMe/TherapistMe/
+2. Navigate to: musical-enigma/Serenity/Serenity/
 3. You'll see folders: App/, Models/, Services/, Views/
 ```
 
@@ -257,7 +257,7 @@ ls TherapistMe/TherapistMe/
 
 ## ❓ Troubleshooting
 
-### "I can't find the TherapistMe folder"
+### "I can't find the Serenity folder"
 **Solution:** You need to download/clone this repository to your Mac first.
 
 ```bash
@@ -305,7 +305,7 @@ On your Mac terminal, run:
 
 ```bash
 cd path/to/musical-enigma
-find TherapistMe -name "*.swift" | sort
+find Serenity -name "*.swift" | sort
 ```
 
 This will show you all 19 Swift files with their exact paths.
@@ -316,10 +316,10 @@ This will show you all 19 Swift files with their exact paths.
 
 All 19 Swift files are in:
 ```
-musical-enigma/TherapistMe/TherapistMe/
+musical-enigma/Serenity/Serenity/
 ```
 
-Just drag that entire `TherapistMe/TherapistMe/` folder into your new Xcode project, and you'll have everything you need!
+Just drag that entire `Serenity/Serenity/` folder into your new Xcode project, and you'll have everything you need!
 
 ---
 
