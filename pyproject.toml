@@ -14,6 +14,7 @@ dependencies = [
     "python-dotenv>=1.0.0",
     "rich>=13.7.0",
     "tenacity>=8.2.0",
+    "mcp>=0.9.0",
 ]
 
 [project.optional-dependencies]
@@ -29,6 +30,8 @@ llm = [
 web = [
     "streamlit>=1.30.0",
     "pandas>=2.0.0",
+    "plotly>=5.18.0",
+    "altair>=5.0.0",
 ]
 
 [build-system]

@@ -242,20 +242,24 @@ class CensusMCPClient:
     def get_employment_data(
         self,
         geography_name: str,
-        year: int = 2022,
-        dataset: str = "acs/acs5",
+        year: int = 2024,
+        dataset: str = "acs/acs1",
         level: GeographyLevel = GeographyLevel.STATE,
     ) -> tuple[EmploymentRecord, Citation]:
         """Fetch employment statistics for a geography.
 
         Args:
             geography_name: State or county name
-            year: Data year (default 2022)
-            dataset: Census dataset (default ACS 5-year)
+            year: Data year (default 2024, most recent ACS 1-year)
+            dataset: Census dataset (default ACS 1-year for latest data)
             level: Geography level
 
         Returns:
             Tuple of (EmploymentRecord, Citation)
+
+        Note:
+            2024 ACS 1-year data released September 2025
+            Use acs/acs5 for 5-year estimates (more geographic detail)
         """
         # Resolve geography to FIPS
         fips_info = self.resolve_fips(geography_name, level)
@@ -331,8 +335,8 @@ class CensusMCPClient:
     def get_industry_employment(
         self,
         geography_name: str,
-        year: int = 2022,
-        dataset: str = "acs/acs5",
+        year: int = 2024,
+        dataset: str = "acs/acs1",
     ) -> tuple[dict[str, int], Citation]:
         """Fetch employment by industry for a geography.
 
@@ -412,7 +416,7 @@ class CensusMCPClient:
         cited data points that can be used to ground LLM responses.
         """
         geographies = geographies or ["California", "Texas", "New York"]
-        years = years or [2022]
+        years = years or [2024]
 
         results = []
         for geo in geographies:
