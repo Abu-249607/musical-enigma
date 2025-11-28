@@ -180,7 +180,10 @@ class ConversationalRAGPipeline:
         # Build context for response
         context_parts = []
         for result in search_results:
-            context_parts.append(result["text"])
+            # Handle different possible key names from search results
+            text = result.get("text") or result.get("document") or result.get("content", "")
+            if text:
+                context_parts.append(text)
 
         context = "\n\n".join(context_parts)
 
