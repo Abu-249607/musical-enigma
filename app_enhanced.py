@@ -43,14 +43,17 @@ st.markdown("""
         padding: 1rem;
         border-radius: 0.5rem;
         margin-bottom: 1rem;
+        color: #0f172a;
     }
     .user-message {
         background-color: #e0f2fe;
         border-left: 4px solid #0ea5e9;
+        color: #0c4a6e;
     }
     .assistant-message {
-        background-color: #f1f5f9;
-        border-left: 4px solid #64748b;
+        background-color: #f8fafc;
+        border-left: 4px solid #3b82f6;
+        color: #1e293b;
     }
 </style>
 """, unsafe_allow_html=True)
