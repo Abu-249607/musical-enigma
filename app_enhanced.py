@@ -11,7 +11,7 @@ import pandas as pd
 from datetime import datetime
 
 from src.census_client import CensusMCPClient
-from src.retrieval.conversational_rag import ConversationalRAGPipeline
+from src.assistants import IntelligentCensusAssistant
 from src.config.settings import get_settings
 
 # Page config
@@ -66,16 +66,12 @@ def get_census_client():
     return CensusMCPClient(api_key=api_key, use_cache=True)
 
 @st.cache_resource
-def get_rag_pipeline():
-    settings = get_settings()
-    api_key = settings.census_api_key if settings.census_api_key else None
-    return ConversationalRAGPipeline(api_key=api_key, enable_memory=True)
+def get_intelligent_assistant():
+    """Get the intelligent Census assistant"""
+    census_client = get_census_client()
+    return IntelligentCensusAssistant(census_client=census_client)
 
 # Initialize session state
-if 'conversation_id' not in st.session_state:
-    rag_pipeline = get_rag_pipeline()
-    st.session_state.conversation_id = rag_pipeline.start_conversation()
-
 if 'chat_history' not in st.session_state:
     st.session_state.chat_history = []
 
@@ -111,10 +107,7 @@ with st.sidebar:
     st.divider()
 
     if st.button("🔄 Clear Chat History"):
-        rag_pipeline = get_rag_pipeline()
-        rag_pipeline.clear_conversation(st.session_state.conversation_id)
         st.session_state.chat_history = []
-        st.session_state.conversation_id = rag_pipeline.start_conversation()
         st.success("Chat history cleared!")
 
 # State list
@@ -174,37 +167,36 @@ with tab1:
         send_button = st.button("Send", type="primary", use_container_width=True)
 
     if send_button and user_query:
-        with st.spinner("Thinking..."):
+        with st.spinner("Fetching fresh Census data..."):
             # Add user message to history
             st.session_state.chat_history.append({
                 "role": "user",
                 "content": user_query
             })
 
-            # Get RAG response
-            rag_pipeline = get_rag_pipeline()
-            response = rag_pipeline.chat(
-                user_query,
-                conversation_id=st.session_state.conversation_id,
-                n_results=5
-            )
+            # Get intelligent assistant response (no hallucinations!)
+            assistant = get_intelligent_assistant()
+            response = assistant.answer_question(user_query)
 
-            # Generate assistant response
-            assistant_response = f"""Based on Census Bureau data:
+            if response["success"]:
+                # Format citations
+                citations_formatted = []
+                if response.get("citations"):
+                    citations_formatted = [cit.to_reference_string() for cit in response["citations"]]
 
-**Context:** {response['context'][:500]}...
-
-**Geography Context:** {response.get('geography_context', 'Not specified')}
-
-*This response is based on {len(response['citations'])} Census data sources.*
-"""
-
-            # Add assistant message to history
-            st.session_state.chat_history.append({
-                "role": "assistant",
-                "content": assistant_response,
-                "citations": [f"{c['dataset']} - {c['year']} - {c['geography']}" for c in response['citations']]
-            })
+                # Add assistant message to history
+                st.session_state.chat_history.append({
+                    "role": "assistant",
+                    "content": response["answer"],
+                    "citations": citations_formatted
+                })
+            else:
+                # Handle errors or missing geography
+                st.session_state.chat_history.append({
+                    "role": "assistant",
+                    "content": response["answer"],
+                    "citations": []
+                })
 
             st.rerun()
 
@@ -340,27 +332,24 @@ with tab3:
         if len(selected_states) < 2:
             st.warning("Please select at least 2 states to compare")
         else:
-            with st.spinner("Fetching comparison data..."):
+            with st.spinner("Fetching fresh Census data for comparison..."):
                 try:
-                    rag_pipeline = get_rag_pipeline()
-                    comparison = rag_pipeline.compare_geographies_conversational(
-                        geographies=selected_states,
-                        metric=metric_to_compare.lower(),
-                        year=year,
-                        conversation_id=st.session_state.conversation_id
-                    )
+                    client = get_census_client()
 
-                    # Build comparison DataFrame
+                    # Fetch data for each state
                     comparison_data = []
-                    for state, data in comparison['geographies'].items():
-                        if 'error' not in data:
+                    for state in selected_states:
+                        try:
+                            record, citation = client.get_employment_data(state, year=year, dataset=dataset)
                             comparison_data.append({
                                 'State': state,
-                                'Unemployment Rate (%)': data['unemployment_rate'],
-                                'Labor Force': data['labor_force'],
-                                'Employed': data['employed'],
-                                'Participation Rate (%)': data['labor_force_participation']
+                                'Unemployment Rate (%)': record.unemployment_rate,
+                                'Labor Force': record.labor_force,
+                                'Employed': record.employed,
+                                'Participation Rate (%)': record.labor_force_participation_rate
                             })
+                        except Exception as e:
+                            st.warning(f"Could not fetch data for {state}: {str(e)}")
 
                     df = pd.DataFrame(comparison_data)
 
