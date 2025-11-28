@@ -49,6 +49,60 @@ class ConversationalRAGPipeline:
         self.enable_memory = enable_memory
         self.memory = ConversationMemory() if enable_memory else None
 
+        # Import chunker for data ingestion
+        from ..preprocessing.chunker import DataChunker
+        self.chunker = DataChunker()
+
+    def ingest_geography(
+        self,
+        geography_name: str,
+        years: List[int] | None = None,
+        include_industry: bool = True,
+    ) -> int:
+        """Ingest employment data for a geography into the vector store.
+
+        Args:
+            geography_name: State or county name
+            years: Years to ingest (default: [2024])
+            include_industry: Whether to include industry breakdown
+
+        Returns:
+            Number of chunks ingested
+        """
+        years = years or [2024]
+        total_chunks = 0
+
+        for year in years:
+            # Fetch employment data
+            try:
+                record, citation = self.client.get_employment_data(
+                    geography_name, year=year
+                )
+
+                # Create chunks
+                chunks = self.chunker.chunk_employment_record(record, citation)
+                total_chunks += self.vector_store.add_chunks(chunks)
+
+            except Exception as e:
+                print(f"Warning: Could not ingest {geography_name} {year}: {e}")
+
+            # Fetch industry data if requested
+            if include_industry:
+                try:
+                    industry_data, industry_citation = self.client.get_industry_employment(
+                        geography_name, year=year
+                    )
+
+                    industry_chunks = self.chunker.chunk_industry_data(
+                        industry_data, geography_name, year, industry_citation
+                    )
+                    total_chunks += self.vector_store.add_chunks(industry_chunks)
+
+                except Exception as e:
+                    print(f"Warning: Could not ingest industry data for {geography_name}: {e}")
+
+        return total_chunks
+
     def start_conversation(self, conversation_id: Optional[str] = None) -> str:
         """Start a new conversation.
 
