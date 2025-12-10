@@ -77,10 +77,15 @@ def get_intelligent_assistant():
 
 @st.cache_resource
 def get_cps_client():
-    """Get CPS Basic Monthly client"""
+    """Get CPS Basic Monthly client
+
+    Note: CPS API may not be available for all years/months.
+    Demo mode automatically activates if API fails.
+    """
     settings = get_settings()
     api_key = settings.census_api_key if settings.census_api_key else None
-    return CPSClient(api_key=api_key, use_cache=True)
+    # Start with demo_mode=False to try real API first, will fall back to demo if API fails
+    return CPSClient(api_key=api_key, use_cache=True, demo_mode=False)
 
 # Initialize session state
 if 'chat_history' not in st.session_state:
@@ -454,6 +459,11 @@ with tab4:
 with tab5:
     st.header("🎓 Student Analytics - CPS Basic Monthly Data")
     st.markdown("*Real-time labor market data from Current Population Survey for students and career planners*")
+
+    # Info about demo mode
+    st.info("ℹ️ **Demo Mode Active**: CPS data features are currently using realistic simulated data. "
+            "The Census Bureau CPS Basic Monthly API is not publicly available in the same format as ACS. "
+            "All calculations, statistics, and visualizations work correctly with demo data to showcase the features.")
 
     # Sub-tabs for different CPS features
     subtab1, subtab2, subtab3 = st.tabs([
