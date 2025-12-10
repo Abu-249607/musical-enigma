@@ -17,12 +17,10 @@ from ..models.cps_models import CPSEducationEmployment
 class EducationROI:
     """Education ROI comparison"""
     education_level: str
-    field_of_study: Optional[str] = None
 
     # Employment outcomes
     employment_rate: float
     unemployment_rate: float
-    avg_hours_worked: Optional[float] = None
 
     # Relative metrics
     employment_advantage: float  # vs. high school
@@ -31,6 +29,10 @@ class EducationROI:
     # Sample info
     sample_size: int
     time_period: str
+
+    # Optional fields (must come after required fields)
+    field_of_study: Optional[str] = None
+    avg_hours_worked: Optional[float] = None
 
 
 class EducationROICalculator:
