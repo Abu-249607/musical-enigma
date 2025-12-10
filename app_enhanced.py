@@ -11,7 +11,11 @@ import pandas as pd
 from datetime import datetime
 
 from src.census_client import CensusMCPClient
+from src.census_client.cps_client import CPSClient
 from src.assistants import IntelligentCensusAssistant
+from src.analytics.education_roi import EducationROICalculator
+from src.analytics.gig_economy_tracker import GigEconomyTracker
+from src.analytics.talent_mapper import GeographicTalentMapper
 from src.config.settings import get_settings
 
 # Page config
@@ -71,6 +75,13 @@ def get_intelligent_assistant():
     census_client = get_census_client()
     return IntelligentCensusAssistant(census_client=census_client)
 
+@st.cache_resource
+def get_cps_client():
+    """Get CPS Basic Monthly client"""
+    settings = get_settings()
+    api_key = settings.census_api_key if settings.census_api_key else None
+    return CPSClient(api_key=api_key, use_cache=True)
+
 # Initialize session state
 if 'chat_history' not in st.session_state:
     st.session_state.chat_history = []
@@ -125,11 +136,12 @@ STATES = [
 ]
 
 # Main tabs
-tab1, tab2, tab3, tab4 = st.tabs([
+tab1, tab2, tab3, tab4, tab5 = st.tabs([
     "💬 Chat Assistant",
     "🎯 Employment Dashboard",
     "📈 State Comparison",
-    "🔬 Advanced Analytics"
+    "🔬 Advanced Analytics",
+    "🎓 Student Analytics (CPS)"
 ])
 
 # Tab 1: Chat Assistant
@@ -437,6 +449,262 @@ with tab4:
         st.caption("• Degree field → job outcomes")
         st.caption("• Earnings by field of study")
         st.caption("• Employment rates by major")
+
+# Tab 5: Student Analytics (CPS)
+with tab5:
+    st.header("🎓 Student Analytics - CPS Basic Monthly Data")
+    st.markdown("*Real-time labor market data from Current Population Survey for students and career planners*")
+
+    # Sub-tabs for different CPS features
+    subtab1, subtab2, subtab3 = st.tabs([
+        "📊 Education ROI",
+        "💼 Gig Economy",
+        "🗺️ Talent Mapping"
+    ])
+
+    # Subtab 1: Education ROI
+    with subtab1:
+        st.subheader("Education Return on Investment Calculator")
+        st.markdown("Compare employment outcomes across education levels using CPS data")
+
+        col1, col2 = st.columns([1, 2])
+
+        with col1:
+            cps_year = st.selectbox("Year", [2024, 2023, 2022], index=0, key="cps_year")
+            cps_month = st.selectbox("Month", list(range(1, 13)), index=10, key="cps_month")
+            cps_state = st.selectbox(
+                "Geography",
+                ["National"] + STATES,
+                index=0,
+                key="cps_state"
+            )
+
+            education_levels = st.multiselect(
+                "Education Levels to Compare",
+                [
+                    "High school graduate",
+                    "Some college or Associate degree",
+                    "Bachelor's degree",
+                    "Master's degree",
+                    "Professional degree",
+                    "Doctoral degree"
+                ],
+                default=["Bachelor's degree", "Master's degree"]
+            )
+
+            calculate_roi = st.button("Calculate ROI", type="primary", use_container_width=True)
+
+        with col2:
+            if calculate_roi and education_levels:
+                with st.spinner("Fetching CPS data..."):
+                    try:
+                        # Map education level names to codes
+                        edu_code_map = {
+                            "High school graduate": "39",
+                            "Some college or Associate degree": "40",
+                            "Bachelor's degree": "43",
+                            "Master's degree": "44",
+                            "Professional degree": "45",
+                            "Doctoral degree": "46"
+                        }
+
+                        edu_codes = [edu_code_map[level] for level in education_levels]
+                        state_fips = None if cps_state == "National" else \
+                                     [fips for fips, name in CPSClient.STATE_FIPS.items() if name == cps_state][0]
+
+                        # Get CPS client and calculator
+                        cps_client = get_cps_client()
+                        roi_calc = EducationROICalculator(cps_client)
+
+                        # Calculate ROI
+                        roi_results = roi_calc.calculate_roi(
+                            year=cps_year,
+                            month=cps_month,
+                            education_levels=edu_codes,
+                            state_fips=state_fips
+                        )
+
+                        # Display results
+                        st.success(f"✅ Analyzed {len(roi_results)} education levels")
+
+                        # Create comparison table
+                        df_roi = pd.DataFrame([{
+                            "Education Level": r.education_level,
+                            "Employment Rate": f"{r.employment_rate:.1f}%",
+                            "Unemployment Rate": f"{r.unemployment_rate:.1f}%",
+                            "Advantage vs. HS": f"+{r.employment_advantage:.1f}%",
+                            "ROI Score": f"{r.roi_score:.1f}"
+                        } for r in roi_results])
+
+                        st.dataframe(df_roi, use_container_width=True, hide_index=True)
+
+                        # Bar chart
+                        fig_roi = px.bar(
+                            x=[r.education_level for r in roi_results],
+                            y=[r.roi_score for r in roi_results],
+                            title="Education ROI Score Comparison",
+                            labels={"x": "Education Level", "y": "ROI Score (0-100)"},
+                            color=[r.roi_score for r in roi_results],
+                            color_continuous_scale="Viridis"
+                        )
+                        st.plotly_chart(fig_roi, use_container_width=True)
+
+                        # Key insights
+                        st.info(f"🏆 Highest ROI: **{roi_results[0].education_level}** ({roi_results[0].roi_score:.1f})")
+
+                    except Exception as e:
+                        st.error(f"Error calculating ROI: {str(e)}")
+
+    # Subtab 2: Gig Economy
+    with subtab2:
+        st.subheader("Gig Economy Tracker")
+        st.markdown("Track non-traditional work arrangements using CPS data")
+
+        col1, col2 = st.columns([1, 2])
+
+        with col1:
+            gig_year = st.selectbox("Year", [2024, 2023, 2022], index=0, key="gig_year")
+            gig_month = st.selectbox("Month", list(range(1, 13)), index=10, key="gig_month")
+            gig_state = st.selectbox(
+                "Geography",
+                ["National"] + STATES,
+                index=0,
+                key="gig_state"
+            )
+
+            analyze_gig = st.button("Analyze Gig Economy", type="primary", use_container_width=True)
+
+        with col2:
+            if analyze_gig:
+                with st.spinner("Fetching CPS gig economy data..."):
+                    try:
+                        state_fips = None if gig_state == "National" else \
+                                     [fips for fips, name in CPSClient.STATE_FIPS.items() if name == gig_state][0]
+
+                        cps_client = get_cps_client()
+                        gig_tracker = GigEconomyTracker(cps_client)
+
+                        stats = gig_tracker.get_current_gig_stats(gig_year, gig_month, state_fips)
+
+                        # Display metrics
+                        st.success("✅ Gig Economy Analysis Complete")
+
+                        m1, m2, m3, m4 = st.columns(4)
+                        m1.metric("Gig Economy Est.", f"{stats.gig_economy_estimate:.1f}%")
+                        m2.metric("Self-Employed", f"{stats.pct_self_employed:.1f}%")
+                        m3.metric("Multiple Jobs", f"{stats.pct_multiple_jobs:.1f}%")
+                        m4.metric("Part-Time Econ.", f"{stats.pct_part_time_economic:.1f}%")
+
+                        # Pie chart
+                        fig_gig = go.Figure(data=[go.Pie(
+                            labels=['Self-Employed', 'Multiple Jobs', 'Part-Time Economic', 'Traditional'],
+                            values=[
+                                stats.self_employed,
+                                stats.multiple_job_holders,
+                                stats.part_time_economic_reasons,
+                                stats.total_employed - stats.self_employed - stats.multiple_job_holders
+                            ],
+                            hole=.3
+                        )])
+                        fig_gig.update_layout(title="Gig Economy Breakdown")
+                        st.plotly_chart(fig_gig, use_container_width=True)
+
+                        st.info(f"📊 Total Employed: {stats.total_employed:,} workers")
+
+                    except Exception as e:
+                        st.error(f"Error analyzing gig economy: {str(e)}")
+
+    # Subtab 3: Talent Mapping
+    with subtab3:
+        st.subheader("Geographic Talent Mapper")
+        st.markdown("Map talent distribution across states")
+
+        col1, col2 = st.columns([1, 2])
+
+        with col1:
+            map_year = st.selectbox("Year", [2024, 2023, 2022], index=0, key="map_year")
+            map_month = st.selectbox("Month", list(range(1, 13)), index=10, key="map_month")
+
+            talent_segment = st.selectbox(
+                "Talent Segment",
+                [
+                    "Bachelor's degree",
+                    "Master's degree",
+                    "Doctoral degree",
+                    "High school graduate"
+                ]
+            )
+
+            states_to_map = st.multiselect(
+                "States to Analyze",
+                STATES,
+                default=["California", "Texas", "New York", "Florida", "Illinois"]
+            )
+
+            map_talent = st.button("Generate Talent Map", type="primary", use_container_width=True)
+
+        with col2:
+            if map_talent and states_to_map:
+                with st.spinner("Mapping talent distribution..."):
+                    try:
+                        edu_code_map = {
+                            "High school graduate": "39",
+                            "Bachelor's degree": "43",
+                            "Master's degree": "44",
+                            "Doctoral degree": "46"
+                        }
+
+                        edu_code = edu_code_map[talent_segment]
+                        state_fips_list = [
+                            fips for fips, name in CPSClient.STATE_FIPS.items()
+                            if name in states_to_map
+                        ]
+
+                        cps_client = get_cps_client()
+                        mapper = GeographicTalentMapper(cps_client)
+
+                        distribution = mapper.get_talent_distribution(
+                            map_year, map_month, edu_code, state_fips_list
+                        )
+
+                        # Display results
+                        st.success(f"✅ Mapped {len(distribution)} states")
+
+                        # Top hotspots
+                        hotspots = mapper.identify_talent_hotspots(
+                            map_year, map_month, edu_code, state_fips_list, top_n=5
+                        )
+
+                        st.subheader("🔥 Top 5 Talent Hotspots")
+                        for hotspot in hotspots:
+                            st.write(f"**#{hotspot.rank} {hotspot.state_name}** - "
+                                   f"{hotspot.talent_count:,} workers "
+                                   f"(Concentration: {hotspot.concentration_index:.2f}x)")
+
+                        # Bar chart
+                        df_dist = pd.DataFrame([{
+                            "State": d.state_name,
+                            "Workers": d.total_workers,
+                            "Concentration Index": d.concentration_index
+                        } for d in distribution])
+
+                        fig_map = px.bar(
+                            df_dist,
+                            x="State",
+                            y="Concentration Index",
+                            title=f"{talent_segment} Concentration by State",
+                            color="Concentration Index",
+                            color_continuous_scale="RdYlGn"
+                        )
+                        st.plotly_chart(fig_map, use_container_width=True)
+
+                    except Exception as e:
+                        st.error(f"Error mapping talent: {str(e)}")
+
+    # CPS Data Source Info
+    st.divider()
+    st.caption("**Data Source:** U.S. Census Bureau Current Population Survey (CPS) Basic Monthly")
+    st.caption("*CPS is the primary source of labor force statistics in the United States*")
 
 # Footer
 st.divider()

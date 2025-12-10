@@ -8,6 +8,9 @@ from .stem_intelligence import (
     STEMCareerPathway,
 )
 from .geo_visualization import GeographicVisualizer
+from .education_roi import EducationROICalculator, EducationROI
+from .gig_economy_tracker import GigEconomyTracker, GigEconomyTrend
+from .talent_mapper import GeographicTalentMapper, TalentHotspot
 
 __all__ = [
     "STEMIntelligenceHub",
@@ -16,4 +19,10 @@ __all__ = [
     "STEMGenderGap",
     "STEMCareerPathway",
     "GeographicVisualizer",
+    "EducationROICalculator",
+    "EducationROI",
+    "GigEconomyTracker",
+    "GigEconomyTrend",
+    "GeographicTalentMapper",
+    "TalentHotspot",
 ]
