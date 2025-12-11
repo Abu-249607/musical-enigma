@@ -1,28 +1,11 @@
-"""Advanced analytics modules for employment data."""
+"""Analytics modules for field-of-study, gender, and sector analysis"""
 
-from .stem_intelligence import (
-    STEMIntelligenceHub,
-    STEMOccupationData,
-    STEMFieldData,
-    STEMGenderGap,
-    STEMCareerPathway,
-)
-from .geo_visualization import GeographicVisualizer
-from .education_roi import EducationROICalculator, EducationROI
-from .gig_economy_tracker import GigEconomyTracker, GigEconomyTrend
-from .talent_mapper import GeographicTalentMapper, TalentHotspot
+from .field_of_study_analyzer import FieldOfStudyAnalyzer
+from .gender_metrics_analyzer import GenderMetricsAnalyzer
+from .sector_analyzer import SectorAnalyzer
 
 __all__ = [
-    "STEMIntelligenceHub",
-    "STEMOccupationData",
-    "STEMFieldData",
-    "STEMGenderGap",
-    "STEMCareerPathway",
-    "GeographicVisualizer",
-    "EducationROICalculator",
-    "EducationROI",
-    "GigEconomyTracker",
-    "GigEconomyTrend",
-    "GeographicTalentMapper",
-    "TalentHotspot",
+    "FieldOfStudyAnalyzer",
+    "GenderMetricsAnalyzer",
+    "SectorAnalyzer",
 ]
