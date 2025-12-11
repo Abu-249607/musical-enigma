@@ -1,0 +1,78 @@
+naics_code,naics_title,naics_2digit,naics_sector,is_tech_sector
+11,Agriculture Forestry Fishing and Hunting,11,Agriculture,0
+21,Mining Quarrying and Oil and Gas Extraction,21,Mining,0
+22,Utilities,22,Utilities,0
+23,Construction,23,Construction,0
+31-33,Manufacturing,31,Manufacturing,0
+3254,Pharmaceutical and Medicine Manufacturing,32,Manufacturing,1
+3341,Computer and Peripheral Equipment Manufacturing,33,Manufacturing,1
+3342,Communications Equipment Manufacturing,33,Manufacturing,1
+3344,Semiconductor and Other Electronic Component Manufacturing,33,Manufacturing,1
+3345,Navigational Measuring Electromedical and Control Instruments Manufacturing,33,Manufacturing,1
+42,Wholesale Trade,42,Wholesale Trade,0
+4234,Professional and Commercial Equipment and Supplies Merchant Wholesalers,42,Wholesale Trade,1
+44-45,Retail Trade,44,Retail Trade,0
+4431,Electronics and Appliance Stores,44,Retail Trade,1
+48-49,Transportation and Warehousing,48,Transportation,0
+51,Information,51,Information,1
+5112,Software Publishers,51,Information,1
+5121,Motion Picture and Video Industries,51,Information,1
+5122,Sound Recording Industries,51,Information,1
+5151,Radio and Television Broadcasting,51,Information,1
+5152,Cable and Other Subscription Programming,51,Information,1
+5171,Wired and Wireless Telecommunications Carriers,51,Information,1
+5172,Telecommunications Resellers,51,Information,1
+5173,Telecommunications,51,Information,1
+5174,Satellite Telecommunications,51,Information,1
+5179,Other Telecommunications,51,Information,1
+5182,Data Processing Hosting and Related Services,51,Information,1
+5191,Other Information Services,51,Information,1
+52,Finance and Insurance,52,Finance and Insurance,0
+5221,Depository Credit Intermediation,52,Finance and Insurance,0
+5222,Nondepository Credit Intermediation,52,Finance and Insurance,0
+5223,Activities Related to Credit Intermediation,52,Finance and Insurance,0
+5231,Securities and Commodity Contracts Intermediation and Brokerage,52,Finance and Insurance,1
+5239,Other Financial Investment Activities,52,Finance and Insurance,1
+5241,Insurance Carriers,52,Finance and Insurance,0
+53,Real Estate and Rental and Leasing,53,Real Estate,0
+54,Professional Scientific and Technical Services,54,Professional Services,1
+5411,Legal Services,54,Professional Services,0
+5412,Accounting Tax Preparation Bookkeeping and Payroll Services,54,Professional Services,0
+5413,Architectural Engineering and Related Services,54,Professional Services,1
+5414,Specialized Design Services,54,Professional Services,1
+5415,Computer Systems Design and Related Services,54,Professional Services,1
+5416,Management Scientific and Technical Consulting Services,54,Professional Services,1
+5417,Scientific Research and Development Services,54,Professional Services,1
+5418,Advertising Public Relations and Related Services,54,Professional Services,1
+55,Management of Companies and Enterprises,55,Management,0
+56,Administrative and Support and Waste Management and Remediation Services,56,Administrative,0
+61,Educational Services,61,Education,0
+6111,Elementary and Secondary Schools,61,Education,0
+6112,Junior Colleges,61,Education,0
+6113,Colleges Universities and Professional Schools,61,Education,0
+6114,Business Schools and Computer and Management Training,61,Education,1
+6115,Technical and Trade Schools,61,Education,0
+6116,Other Schools and Instruction,61,Education,0
+6117,Educational Support Services,61,Education,0
+62,Health Care and Social Assistance,62,Healthcare,0
+6211,Offices of Physicians,62,Healthcare,0
+6212,Offices of Dentists,62,Healthcare,0
+6213,Offices of Other Health Practitioners,62,Healthcare,0
+6214,Outpatient Care Centers,62,Healthcare,0
+6215,Medical and Diagnostic Laboratories,62,Healthcare,1
+6216,Home Health Care Services,62,Healthcare,0
+6221,General Medical and Surgical Hospitals,62,Healthcare,0
+6222,Psychiatric and Substance Abuse Hospitals,62,Healthcare,0
+6223,Specialty (except Psychiatric and Substance Abuse) Hospitals,62,Healthcare,0
+6231,Nursing Care Facilities (Skilled Nursing Facilities),62,Healthcare,0
+6232,Residential Intellectual and Developmental Disability Mental Health and Substance Abuse Facilities,62,Healthcare,0
+6233,Continuing Care Retirement Communities and Assisted Living Facilities for the Elderly,62,Healthcare,0
+6239,Other Residential Care Facilities,62,Healthcare,0
+6241,Individual and Family Services,62,Healthcare,0
+6242,Community Food and Housing and Emergency and Other Relief Services,62,Healthcare,0
+6243,Vocational Rehabilitation Services,62,Healthcare,0
+6244,Child Day Care Services,62,Healthcare,0
+71,Arts Entertainment and Recreation,71,Arts,0
+72,Accommodation and Food Services,72,Hospitality,0
+81,Other Services (except Public Administration),81,Other Services,0
+92,Public Administration,92,Government,0

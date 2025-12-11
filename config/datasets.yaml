@@ -1,0 +1,110 @@
+# Dataset Availability Configuration
+# This file documents the availability windows for all data sources
+# Used by src/data_governance/availability.py
+
+datasets:
+  acs_1year_api:
+    name: "ACS 1-Year API (Detailed Tables)"
+    min_year: 2005
+    max_year: 2024
+    has_field_of_study: false
+    has_earnings: true
+    release_schedule: "September annually"
+    release_lag_months: 9
+    notes: "2024 data released September 2025. Use PUMS for field-of-study."
+
+  acs_1year_pums:
+    name: "ACS 1-Year PUMS (Microdata)"
+    min_year: 2005
+    max_year: 2024
+    has_field_of_study: true
+    fod_variable: "FOD1P"  # 4-digit CIP 2010 codes
+    has_earnings: true
+    release_schedule: "October annually"
+    release_lag_months: 10
+    notes: "Person-level microdata. Best for field-of-study analysis."
+
+  acs_5year_pums:
+    name: "ACS 5-Year PUMS (Microdata)"
+    min_year: 2009
+    max_year: 2023  # 2019-2023
+    has_field_of_study: true
+    has_earnings: true
+    release_schedule: "December annually"
+    release_lag_months: 13
+    notes: "5-year pooled sample. Larger n for rare fields."
+
+  cps_asec:
+    name: "CPS ASEC (Annual Social and Economic Supplement)"
+    min_year: 1962
+    max_year: 2024
+    has_field_of_study: true
+    fod_variables: ["EDDEGREE", "GRADDEG"]
+    has_earnings: true
+    release_schedule: "September annually"
+    release_lag_months: 6
+    access_method: "IPUMS extract"
+    notes: "Best longitudinal field-of-study data. EDDEGREE added 2015."
+
+  cps_basic:
+    name: "CPS Basic Monthly"
+    min_year: 1994
+    max_year: 2024
+    has_field_of_study: false
+    has_earnings: false
+    release_schedule: "Monthly, 1 month lag"
+    release_lag_months: 1
+    notes: "Labor force stats only. No earnings or field-of-study."
+
+  bls_oes:
+    name: "BLS Occupational Employment Statistics"
+    min_year: 1997
+    max_year: 2024
+    has_field_of_study: false
+    has_earnings: true
+    release_schedule: "March annually (May survey)"
+    release_lag_months: 10
+    notes: "Best wage data by SOC occupation code."
+
+# Field-of-Study Variables by Dataset
+field_of_study_variables:
+  acs_pums:
+    primary: "FOD1P"  # Field of degree, 1st Bachelor's (CIP 2010 4-digit)
+    secondary: "FOD2P"  # Field of degree, 2nd Bachelor's
+    coding_scheme: "CIP 2010"
+    notes: "4-digit CIP codes. Only for Bachelor's degree holders."
+
+  cps_asec:
+    primary: "EDDEGREE"  # Recent graduate degree field
+    secondary: "GRADDEG"  # Graduate degree type
+    coding_scheme: "Custom CPS categories"
+    notes: "EDDEGREE covers recent graduates only (within 1-2 years). Added 2015."
+    available_from: 2015
+
+# Geography Support by Dataset
+geography_support:
+  acs_1year_api: ["national", "state"]
+  acs_5year_api: ["national", "state", "county", "tract", "block_group"]
+  acs_1year_pums: ["puma"]  # ~100k population areas
+  acs_5year_pums: ["puma"]
+  cps_basic: ["national", "state"]
+  cps_asec: ["national", "state"]
+  bls_oes: ["national", "state", "metro"]
+
+# Data Quality Notes
+data_quality:
+  acs_1year_pums:
+    sample_size: "~3 million person records"
+    margin_of_error: "Use replicate weights PWGTP1-PWGTP80"
+    small_cell_suppression: "Suppress if n < 100"
+
+  acs_5year_pums:
+    sample_size: "~15 million person records (5 years pooled)"
+    margin_of_error: "Use replicate weights"
+    small_cell_suppression: "Suppress if n < 100"
+
+  cps_asec:
+    sample_size: "~150k person records annually"
+    margin_of_error: "Use weights WTFINL"
+    small_cell_suppression: "Suppress if n < 50"
+    notes: "Smaller sample than ACS. Best for national/large state estimates."
