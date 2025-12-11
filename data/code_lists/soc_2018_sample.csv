@@ -1,0 +1,87 @@
+soc_code,soc_title,soc_2digit,soc_major_group,is_stem
+11-0000,Management Occupations,11,Management Occupations,0
+11-1021,General and Operations Managers,11,Management Occupations,0
+11-2021,Marketing Managers,11,Management Occupations,0
+11-3021,Computer and Information Systems Managers,11,Management Occupations,1
+13-0000,Business and Financial Operations Occupations,13,Business and Financial Operations,0
+13-1111,Management Analysts,13,Business and Financial Operations,0
+13-1161,Market Research Analysts and Marketing Specialists,13,Business and Financial Operations,0
+13-2011,Accountants and Auditors,13,Business and Financial Operations,0
+13-2051,Financial Analysts,13,Business and Financial Operations,0
+15-0000,Computer and Mathematical Occupations,15,Computer and Mathematical,1
+15-1211,Computer Systems Analysts,15,Computer and Mathematical,1
+15-1212,Information Security Analysts,15,Computer and Mathematical,1
+15-1221,Computer and Information Research Scientists,15,Computer and Mathematical,1
+15-1231,Computer Network Support Specialists,15,Computer and Mathematical,1
+15-1232,Computer User Support Specialists,15,Computer and Mathematical,1
+15-1241,Computer Network Architects,15,Computer and Mathematical,1
+15-1242,Database Administrators,15,Computer and Mathematical,1
+15-1243,Database Architects,15,Computer and Mathematical,1
+15-1244,Network and Computer Systems Administrators,15,Computer and Mathematical,1
+15-1251,Computer Programmers,15,Computer and Mathematical,1
+15-1252,Software Developers,15,Computer and Mathematical,1
+15-1253,Software Quality Assurance Analysts and Testers,15,Computer and Mathematical,1
+15-1254,Web Developers,15,Computer and Mathematical,1
+15-1255,Web and Digital Interface Designers,15,Computer and Mathematical,1
+15-1256,Software Developers and Software Quality Assurance Analysts and Testers,15,Computer and Mathematical,1
+15-1299,Computer Occupations All Other,15,Computer and Mathematical,1
+15-2011,Actuaries,15,Computer and Mathematical,1
+15-2021,Mathematicians,15,Computer and Mathematical,1
+15-2031,Operations Research Analysts,15,Computer and Mathematical,1
+15-2041,Statisticians,15,Computer and Mathematical,1
+15-2051,Data Scientists,15,Computer and Mathematical,1
+17-0000,Architecture and Engineering Occupations,17,Architecture and Engineering,1
+17-2011,Aerospace Engineers,17,Architecture and Engineering,1
+17-2021,Agricultural Engineers,17,Architecture and Engineering,1
+17-2031,Biomedical Engineers,17,Architecture and Engineering,1
+17-2041,Chemical Engineers,17,Architecture and Engineering,1
+17-2051,Civil Engineers,17,Architecture and Engineering,1
+17-2061,Computer Hardware Engineers,17,Architecture and Engineering,1
+17-2071,Electrical Engineers,17,Architecture and Engineering,1
+17-2072,Electronics Engineers,17,Architecture and Engineering,1
+17-2081,Environmental Engineers,17,Architecture and Engineering,1
+17-2112,Industrial Engineers,17,Architecture and Engineering,1
+17-2131,Materials Engineers,17,Architecture and Engineering,1
+17-2141,Mechanical Engineers,17,Architecture and Engineering,1
+17-2199,Engineers All Other,17,Architecture and Engineering,1
+19-0000,Life Physical and Social Science Occupations,19,Life Physical and Social Science,1
+19-1021,Biochemists and Biophysicists,19,Life Physical and Social Science,1
+19-1029,Biological Scientists All Other,19,Life Physical and Social Science,1
+19-1041,Epidemiologists,19,Life Physical and Social Science,1
+19-1042,Medical Scientists Except Epidemiologists,19,Life Physical and Social Science,1
+19-2011,Astronomers,19,Life Physical and Social Science,1
+19-2012,Physicists,19,Life Physical and Social Science,1
+19-2021,Atmospheric and Space Scientists,19,Life Physical and Social Science,1
+19-2031,Chemists,19,Life Physical and Social Science,1
+19-2041,Environmental Scientists and Specialists,19,Life Physical and Social Science,1
+19-3011,Economists,19,Life Physical and Social Science,1
+19-3021,Market Research Analysts and Marketing Specialists,19,Life Physical and Social Science,0
+19-3031,Clinical Counseling and School Psychologists,19,Life Physical and Social Science,0
+19-3039,Psychologists All Other,19,Life Physical and Social Science,0
+19-3051,Urban and Regional Planners,19,Life Physical and Social Science,0
+19-3091,Anthropologists and Archeologists,19,Life Physical and Social Science,0
+19-3092,Geographers,19,Life Physical and Social Science,1
+19-3094,Political Scientists,19,Life Physical and Social Science,0
+19-3099,Social Scientists and Related Workers All Other,19,Life Physical and Social Science,0
+25-0000,Educational Instruction and Library Occupations,25,Education Training and Library,0
+25-1011,Business Teachers Postsecondary,25,Education Training and Library,0
+25-1021,Computer Science Teachers Postsecondary,25,Education Training and Library,1
+25-1022,Mathematical Science Teachers Postsecondary,25,Education Training and Library,1
+25-1032,Engineering Teachers Postsecondary,25,Education Training and Library,1
+25-1042,Biological Science Teachers Postsecondary,25,Education Training and Library,1
+25-1051,Atmospheric Earth Marine and Space Sciences Teachers Postsecondary,25,Education Training and Library,1
+25-1052,Chemistry Teachers Postsecondary,25,Education Training and Library,1
+25-1053,Environmental Science Teachers Postsecondary,25,Education Training and Library,1
+25-1054,Physics Teachers Postsecondary,25,Education Training and Library,1
+29-0000,Healthcare Practitioners and Technical Occupations,29,Healthcare Practitioners and Technical,1
+29-1141,Registered Nurses,29,Healthcare Practitioners and Technical,1
+29-1171,Nurse Practitioners,29,Healthcare Practitioners and Technical,1
+29-1215,Family Medicine Physicians,29,Healthcare Practitioners and Technical,1
+29-1216,General Internal Medicine Physicians,29,Healthcare Practitioners and Technical,1
+41-0000,Sales and Related Occupations,41,Sales and Related,0
+41-3011,Advertising Sales Agents,41,Sales and Related,0
+41-3031,Securities Commodities and Financial Services Sales Agents,41,Sales and Related,0
+41-4011,Sales Representatives Wholesale and Manufacturing,41,Sales and Related,0
+43-0000,Office and Administrative Support Occupations,43,Office and Administrative Support,0
+43-6011,Executive Secretaries and Executive Administrative Assistants,43,Office and Administrative Support,0
+43-6014,Secretaries and Administrative Assistants,43,Office and Administrative Support,0

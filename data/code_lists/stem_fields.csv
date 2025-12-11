@@ -1,0 +1,37 @@
+cip_2digit,cip_broad_field,is_stem,stem_category
+01,Agriculture Agriculture Operations and Related Sciences,1,Agricultural Sciences
+03,Natural Resources and Conservation,1,Environmental Sciences
+04,Architecture and Related Services,0,
+05,Area Ethnic Cultural Gender and Group Studies,0,
+09,Communication Journalism and Related Programs,0,
+10,Communications Technologies/Technicians and Support Services,0,
+11,Computer and Information Sciences and Support Services,1,Computer Science
+13,Education,0,
+14,Engineering,1,Engineering
+15,Engineering Technologies and Engineering-Related Fields,1,Engineering Technology
+16,Foreign Languages Literatures and Linguistics,0,
+19,Family and Consumer Sciences/Human Sciences,0,
+23,English Language and Literature/Letters,0,
+24,Liberal Arts and Sciences General Studies and Humanities,0,
+25,Library Science,0,
+26,Biological and Biomedical Sciences,1,Life Sciences
+27,Mathematics and Statistics,1,Mathematics
+29,Military Technologies and Applied Sciences,1,Military Science
+30,Multi/Interdisciplinary Studies,0,
+31,Parks Recreation Leisure and Fitness Studies,0,
+38,Philosophy and Religious Studies,0,
+39,Theology and Religious Vocations,0,
+40,Physical Sciences,1,Physical Sciences
+41,Science Technologies/Technicians,1,Science Technology
+42,Psychology,0,
+43,Homeland Security Law Enforcement Firefighting and Related Protective Services,0,
+44,Public Administration and Social Service Professions,0,
+45,Social Sciences,0,
+46,Construction Trades,0,
+47,Mechanic and Repair Technologies/Technicians,0,
+48,Precision Production,0,
+49,Transportation and Materials Moving,0,
+50,Visual and Performing Arts,0,
+51,Health Professions and Related Programs,0,
+52,Business Management Marketing and Related Support Services,0,
+54,History,0,

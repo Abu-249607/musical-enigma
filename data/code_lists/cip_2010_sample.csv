@@ -1,0 +1,81 @@
+cip_code,cip_title,cip_2digit,cip_broad_field,is_stem
+1101,Computer and Information Sciences General,11,Computer and Information Sciences and Support Services,1
+1102,Artificial Intelligence,11,Computer and Information Sciences and Support Services,1
+1103,Information Technology,11,Computer and Information Sciences and Support Services,1
+1104,Informatics,11,Computer and Information Sciences and Support Services,1
+1105,Human-Centered Technology Design,11,Computer and Information Sciences and Support Services,1
+1107,Computer Science,11,Computer and Information Sciences and Support Services,1
+1108,Computer Software and Media Applications,11,Computer and Information Sciences and Support Services,1
+1109,Computer Systems Networking and Telecommunications,11,Computer and Information Sciences and Support Services,1
+1110,Computer/Information Technology Administration and Management,11,Computer and Information Sciences and Support Services,1
+1199,Computer and Information Sciences and Support Services Other,11,Computer and Information Sciences and Support Services,1
+1401,Engineering General,14,Engineering,1
+1402,Aerospace Aeronautical and Astronautical/Space Engineering,14,Engineering,1
+1403,Agricultural Engineering,14,Engineering,1
+1404,Architectural Engineering,14,Engineering,1
+1405,Biomedical/Medical Engineering,14,Engineering,1
+1407,Chemical Engineering,14,Engineering,1
+1408,Civil Engineering,14,Engineering,1
+1409,Computer Engineering,14,Engineering,1
+1410,Electrical Electronics and Communications Engineering,14,Engineering,1
+1411,Engineering Mechanics,14,Engineering,1
+1412,Engineering Physics/Applied Physics,14,Engineering,1
+1413,Engineering Science,14,Engineering,1
+1414,Environmental/Environmental Health Engineering,14,Engineering,1
+1415,Industrial Engineering,14,Engineering,1
+1418,Materials Engineering,14,Engineering,1
+1419,Mechanical Engineering,14,Engineering,1
+1427,Systems Engineering,14,Engineering,1
+1435,Industrial and Systems Engineering,14,Engineering,1
+2601,Biology/Biological Sciences General,26,Biological and Biomedical Sciences,1
+2602,Biochemistry Biophysics and Molecular Biology,26,Biological and Biomedical Sciences,1
+2603,Botany/Plant Biology,26,Biological and Biomedical Sciences,1
+2604,Cell/Cellular Biology and Anatomical Sciences,26,Biological and Biomedical Sciences,1
+2605,Microbiological Sciences and Immunology,26,Biological and Biomedical Sciences,1
+2607,Zoology/Animal Biology,26,Biological and Biomedical Sciences,1
+2608,Genetics,26,Biological and Biomedical Sciences,1
+2609,Physiology Pathology and Related Sciences,26,Biological and Biomedical Sciences,1
+2610,Pharmacology and Toxicology,26,Biological and Biomedical Sciences,1
+2611,Biomathematics Bioinformatics and Computational Biology,26,Biological and Biomedical Sciences,1
+2613,Neurobiology and Neurosciences,26,Biological and Biomedical Sciences,1
+2701,Mathematics General,27,Mathematics and Statistics,1
+2702,Applied Mathematics,27,Mathematics and Statistics,1
+2703,Computational and Applied Mathematics,27,Mathematics and Statistics,1
+2704,Computational Mathematics,27,Mathematics and Statistics,1
+2705,Financial Mathematics,27,Mathematics and Statistics,1
+2706,Mathematical Biology,27,Mathematics and Statistics,1
+2708,Mathematics and Statistics,27,Mathematics and Statistics,1
+2709,Applied Statistics,27,Mathematics and Statistics,1
+4001,Physical Sciences General,40,Physical Sciences,1
+4002,Astronomy and Astrophysics,40,Physical Sciences,1
+4004,Atmospheric Sciences and Meteorology,40,Physical Sciences,1
+4005,Chemistry,40,Physical Sciences,1
+4006,Geological and Earth Sciences/Geosciences,40,Physical Sciences,1
+4008,Physics,40,Physical Sciences,1
+4010,Materials Science,40,Physical Sciences,1
+5201,Business Administration and Management General,52,Business Management Marketing and Related Support Services,0
+5202,Accounting and Related Services,52,Business Management Marketing and Related Support Services,0
+5203,Finance and Financial Management Services,52,Business Management Marketing and Related Support Services,0
+5204,Business Operations Support and Assistant Services,52,Business Management Marketing and Related Support Services,0
+5205,Marketing,52,Business Management Marketing and Related Support Services,0
+5206,Business/Managerial Economics,52,Business Management Marketing and Related Support Services,0
+5207,Entrepreneurial and Small Business Operations,52,Business Management Marketing and Related Support Services,0
+5208,Hospitality Administration/Management,52,Business Management Marketing and Related Support Services,0
+5209,Human Resources Management and Services,52,Business Management Marketing and Related Support Services,0
+5210,International Business,52,Business Management Marketing and Related Support Services,0
+2301,English Language and Literature General,23,English Language and Literature/Letters,0
+2302,Creative Writing,23,English Language and Literature/Letters,0
+2303,Professional Technical Business and Scientific Writing,23,English Language and Literature/Letters,0
+2304,Rhetoric and Composition/Writing Studies,23,English Language and Literature/Letters,0
+2305,Literature,23,English Language and Literature/Letters,0
+4201,Psychology General,42,Psychology,0
+4202,Research and Experimental Psychology,42,Psychology,0
+4203,Clinical Counseling and Applied Psychology,42,Psychology,0
+4501,Social Sciences General,45,Social Sciences,0
+4502,Anthropology,45,Social Sciences,0
+4504,Criminology,45,Social Sciences,0
+4505,Economics,45,Social Sciences,0
+4506,Geography and Cartography,45,Social Sciences,0
+4507,International Relations and National Security Studies,45,Social Sciences,0
+4508,Political Science and Government,45,Social Sciences,0
+4509,Sociology,45,Social Sciences,0
