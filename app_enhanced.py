@@ -184,7 +184,7 @@ with tab1:
         send_button = st.button("Send", type="primary", use_container_width=True)
 
     if send_button and user_query:
-        with st.spinner("Fetching fresh Census data..."):
+        with st.spinner(f"Fetching {year} Census data..."):
             # Add user message to history
             st.session_state.chat_history.append({
                 "role": "user",
@@ -193,7 +193,7 @@ with tab1:
 
             # Get intelligent assistant response (no hallucinations!)
             assistant = get_intelligent_assistant()
-            response = assistant.answer_question(user_query)
+            response = assistant.answer_question(user_query, year=year, dataset=dataset)
 
             if response["success"]:
                 # Format citations
@@ -688,11 +688,6 @@ with tab4:
 with tab5:
     st.header("🎓 Student Analytics - CPS Basic Monthly Data")
     st.markdown("*Real-time labor market data from Current Population Survey for students and career planners*")
-
-    # Info about demo mode
-    st.info("ℹ️ **Demo Mode Active**: CPS data features are currently using realistic simulated data. "
-            "The Census Bureau CPS Basic Monthly API is not publicly available in the same format as ACS. "
-            "All calculations, statistics, and visualizations work correctly with demo data to showcase the features.")
 
     # Sub-tabs for different CPS features
     subtab1, subtab2, subtab3 = st.tabs([

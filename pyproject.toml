@@ -36,6 +36,7 @@ web = [
     "altair>=5.0.0",
     "folium>=0.15.0",
     "streamlit-folium>=0.15.0",
+    "matplotlib>=3.7.0",
 ]
 
 [build-system]

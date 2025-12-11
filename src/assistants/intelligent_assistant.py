@@ -150,17 +150,22 @@ class IntelligentCensusAssistant:
 
         return intent
 
-    def answer_question(self, query: str) -> Dict:
+    def answer_question(self, query: str, year: int = 2024, dataset: str = "acs/acs1") -> Dict:
         """Answer user's question with accurate Census data
 
         Args:
             query: User's natural language query
+            year: Data year to query (default: 2024)
+            dataset: Dataset to use (default: "acs/acs1")
 
         Returns:
             Dictionary with answer, data, and citations
         """
         # Parse the query
         intent = self.parse_query(query)
+
+        # Override year with provided parameter
+        intent.year = year
 
         # If no geography found, return helpful message
         if not intent.geography and not intent.multiple_geographies:
