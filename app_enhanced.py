@@ -418,42 +418,271 @@ with tab3:
 
 # Tab 4: Advanced Analytics
 with tab4:
-    st.header("Advanced Employment Analytics")
-    st.markdown("*Coming soon: STEM career pathways, education ROI, and talent flow mapping*")
+    st.header("🎓 Field-of-Study Analytics")
+    st.markdown("*Analyze employment outcomes by field of study with gender and sector breakdowns*")
 
-    col1, col2 = st.columns(2)
+    # Sub-tabs for different analytics
+    analysis_tab1, analysis_tab2, analysis_tab3 = st.tabs([
+        "📊 Field Comparison",
+        "⚖️ Gender Gap Analysis",
+        "🗺️ Geographic Insights"
+    ])
 
-    with col1:
-        st.subheader("🎓 STEM Career Intelligence")
-        st.info("Track STEM employment trends, gender gaps, and geographic concentration")
-        st.caption("• Field-to-job pipeline mapping")
-        st.caption("• Gender representation analysis")
-        st.caption("• Hot job alerts by region")
+    # Analysis Tab 1: Field Comparison
+    with analysis_tab1:
+        st.subheader("Compare Fields of Study")
+        st.markdown("Compare employment outcomes across different academic fields")
 
-    with col2:
-        st.subheader("💼 Gig Economy Tracker")
-        st.info("Analyze self-employment and future of work trends")
-        st.caption("• Class of worker analysis")
-        st.caption("• Independent contractor growth")
-        st.caption("• Industry-specific trends")
+        col1, col2 = st.columns([1, 2])
 
-    st.divider()
+        with col1:
+            st.caption("**Select Fields to Compare:**")
 
-    col3, col4 = st.columns(2)
+            # Popular comparisons quick-select
+            comparison_sets = {
+                "STEM Fields": ["Computer Science", "Engineering", "Biology", "Mathematics"],
+                "Health Professions": ["Nursing", "Public Health", "Health Administration"],
+                "Business & Social Sciences": ["Business", "Psychology", "Economics"]
+            }
 
-    with col3:
-        st.subheader("🗺️ Geographic Talent Mapper")
-        st.info("Visualize where talent concentrates and flows")
-        st.caption("• Occupation concentration heat maps")
-        st.caption("• Brain drain/gain analysis")
-        st.caption("• Recruiting hotspot identification")
+            selected_set = st.selectbox(
+                "Quick Select:",
+                ["Custom"] + list(comparison_sets.keys()),
+                key="field_comparison_set"
+            )
 
-    with col4:
-        st.subheader("📊 Education ROI Calculator")
-        st.info("Connect degrees to employment outcomes")
-        st.caption("• Degree field → job outcomes")
-        st.caption("• Earnings by field of study")
-        st.caption("• Employment rates by major")
+            if selected_set != "Custom":
+                st.info(f"Comparing: {', '.join(comparison_sets[selected_set])}")
+                selected_fields = comparison_sets[selected_set]
+            else:
+                selected_fields = st.multiselect(
+                    "Select fields:",
+                    [
+                        "Computer Science",
+                        "Engineering",
+                        "Biology",
+                        "Mathematics",
+                        "Nursing",
+                        "Business",
+                        "Psychology",
+                        "Education",
+                        "Communications"
+                    ],
+                    default=["Computer Science", "Engineering"]
+                )
+
+            compare_button = st.button("Compare Fields", type="primary", use_container_width=True)
+
+        with col2:
+            if compare_button and selected_fields:
+                st.markdown("### 📈 Comparison Results")
+
+                # Note about data source
+                st.info("💡 **Note**: Field-of-study analytics use ACS PUMS microdata. "
+                       "Full analytics available when PUMS data is loaded. Currently showing demonstration mode.")
+
+                # Create sample comparison data
+                comparison_data = []
+                for field in selected_fields:
+                    # Simulated data for demonstration
+                    comparison_data.append({
+                        "Field": field,
+                        "Employment Rate": 92.5 + hash(field) % 8,
+                        "Median Earnings": 50000 + (hash(field) % 50) * 1000,
+                        "% Female": 30 + hash(field) % 40
+                    })
+
+                comparison_df = pd.DataFrame(comparison_data)
+
+                # Employment Rate Chart
+                st.markdown("#### Employment Rates by Field")
+                fig1 = px.bar(
+                    comparison_df,
+                    x="Field",
+                    y="Employment Rate",
+                    color="Field",
+                    title="Employment Rate Comparison"
+                )
+                st.plotly_chart(fig1, use_container_width=True)
+
+                # Median Earnings Chart
+                st.markdown("#### Median Earnings by Field")
+                fig2 = px.bar(
+                    comparison_df,
+                    x="Field",
+                    y="Median Earnings",
+                    color="Field",
+                    title="Median Earnings Comparison"
+                )
+                fig2.update_traces(marker_color='lightseagreen')
+                st.plotly_chart(fig2, use_container_width=True)
+
+                # Gender representation
+                st.markdown("#### Female Representation by Field")
+                fig3 = px.bar(
+                    comparison_df,
+                    x="Field",
+                    y="% Female",
+                    color="Field",
+                    title="Female Representation (%)"
+                )
+                fig3.update_traces(marker_color='mediumpurple')
+                st.plotly_chart(fig3, use_container_width=True)
+
+                # Summary table
+                st.markdown("#### Summary Table")
+                st.dataframe(comparison_df, use_container_width=True, hide_index=True)
+
+    # Analysis Tab 2: Gender Gap Analysis
+    with analysis_tab2:
+        st.subheader("Gender Gap Analysis")
+        st.markdown("Analyze employment and earnings gaps between male and female graduates")
+
+        col1, col2 = st.columns([1, 2])
+
+        with col1:
+            selected_field = st.selectbox(
+                "Select Field:",
+                [
+                    "Computer Science",
+                    "Engineering",
+                    "Business",
+                    "Nursing",
+                    "Education",
+                    "Psychology"
+                ],
+                key="gender_field"
+            )
+
+            education_level = st.selectbox(
+                "Education Level:",
+                ["Bachelor's degree", "Master's degree", "Doctoral degree"],
+                key="gender_edu"
+            )
+
+            analyze_gender = st.button("Analyze Gender Gap", type="primary", use_container_width=True)
+
+        with col2:
+            if analyze_gender:
+                st.markdown(f"### ⚖️ Gender Gap Analysis: {selected_field}")
+
+                st.info("💡 **Note**: Gender gap analytics use ACS PUMS microdata with person-level records. "
+                       "Full analytics available when PUMS data is loaded. Currently showing demonstration mode.")
+
+                # Simulated gender gap data
+                male_employment = 95.2
+                female_employment = 93.8
+                male_earnings = 85000
+                female_earnings = 72000
+
+                # Metrics
+                col_m1, col_m2, col_m3 = st.columns(3)
+
+                with col_m1:
+                    st.metric(
+                        "Employment Gap",
+                        f"{male_employment - female_employment:.1f}%",
+                        delta=f"Male: {male_employment:.1f}% | Female: {female_employment:.1f}%",
+                        delta_color="off"
+                    )
+
+                with col_m2:
+                    earnings_gap_pct = ((male_earnings - female_earnings) / male_earnings) * 100
+                    st.metric(
+                        "Earnings Gap",
+                        f"{earnings_gap_pct:.1f}%",
+                        delta=f"${male_earnings - female_earnings:,} difference",
+                        delta_color="inverse"
+                    )
+
+                with col_m3:
+                    female_pct = 38.5
+                    st.metric(
+                        "Female Representation",
+                        f"{female_pct:.1f}%",
+                        delta="of total graduates",
+                        delta_color="off"
+                    )
+
+                # Gender comparison charts
+                st.markdown("#### Employment & Earnings Comparison")
+
+                gender_data = pd.DataFrame({
+                    "Metric": ["Employment Rate", "Median Earnings"],
+                    "Male": [male_employment, male_earnings],
+                    "Female": [female_employment, female_earnings]
+                })
+
+                fig = go.Figure(data=[
+                    go.Bar(name='Male', x=gender_data["Metric"], y=gender_data["Male"], marker_color='steelblue'),
+                    go.Bar(name='Female', x=gender_data["Metric"], y=gender_data["Female"], marker_color='coral')
+                ])
+                fig.update_layout(barmode='group', title="Gender Comparison")
+                st.plotly_chart(fig, use_container_width=True)
+
+                # Insights
+                st.markdown("#### 💡 Key Insights")
+                st.success(f"✓ **Employment**: {'Male' if male_employment > female_employment else 'Female'} graduates have {abs(male_employment - female_employment):.1f}% higher employment rate")
+                st.success(f"✓ **Earnings**: Women earn ${male_earnings - female_earnings:,} less on average ({earnings_gap_pct:.1f}% gap)")
+                st.success(f"✓ **Representation**: Women make up {female_pct:.1f}% of {selected_field} graduates")
+
+    # Analysis Tab 3: Geographic Insights
+    with analysis_tab3:
+        st.subheader("Geographic Talent Distribution")
+        st.markdown("Explore where field graduates work and geographic concentration patterns")
+
+        col1, col2 = st.columns([1, 2])
+
+        with col1:
+            selected_field_geo = st.selectbox(
+                "Select Field:",
+                [
+                    "Computer Science",
+                    "Engineering",
+                    "Business",
+                    "Healthcare"
+                ],
+                key="geo_field"
+            )
+
+            metric_type = st.radio(
+                "View:",
+                ["Employment Concentration", "Median Earnings", "Gender Distribution"],
+                key="geo_metric"
+            )
+
+            show_geo = st.button("Show Geographic Distribution", type="primary", use_container_width=True)
+
+        with col2:
+            if show_geo:
+                st.markdown(f"### 🗺️ {selected_field_geo}: {metric_type}")
+
+                st.info("💡 **Note**: Geographic analytics use state-level ACS PUMS data. "
+                       "Full analytics available when PUMS data is loaded. Currently showing demonstration mode.")
+
+                # Sample state data
+                states_sample = ["California", "Texas", "New York", "Florida", "Illinois", "Pennsylvania"]
+                values = [45000 + i * 5000 for i in range(len(states_sample))]
+
+                geo_df = pd.DataFrame({
+                    "State": states_sample,
+                    "Value": values
+                })
+
+                # Bar chart
+                fig = px.bar(
+                    geo_df,
+                    x="State",
+                    y="Value",
+                    title=f"{metric_type} by State",
+                    color="Value",
+                    color_continuous_scale="Viridis"
+                )
+                st.plotly_chart(fig, use_container_width=True)
+
+                # Top states table
+                st.markdown("#### Top States")
+                st.dataframe(geo_df.sort_values("Value", ascending=False), use_container_width=True, hide_index=True)
 
 # Tab 5: Student Analytics (CPS)
 with tab5:
