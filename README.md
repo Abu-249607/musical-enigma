@@ -51,7 +51,7 @@ A data-driven early warning system that:
 ## 📊 Dataset
 
 ### Overview
-- **Size**: 4,424 student records
+- **Size**: 4,424 student records (3,403 after preprocessing and outlier removal)
 - **Features**: 37 variables covering demographics, academics, family background, and economics
 - **Target**: Student status (Dropout, Graduate, Enrolled)
 - **Modeling Target**: Binary classification (Dropout vs. Not Dropout)
@@ -155,17 +155,16 @@ Comprehensive evaluation metrics:
 
 | Model | Accuracy | Precision | Recall | F1-Score | AUC-ROC |
 |-------|----------|-----------|--------|----------|---------|
-| **Logistic Regression** | 74.4% | 59.1% | 32.9% | 0.424 | 0.XXX |
-| **Decision Tree** | XX.X% | XX.X% | XX.X% | 0.XXX | 0.XXX |
-| **Random Forest** | XX.X% | XX.X% | XX.X% | 0.XXX | 0.XXX |
-| **Gradient Boosting** | XX.X% | XX.X% | XX.X% | 0.XXX | 0.XXX |
+| Logistic Regression | 87.2% | 73.3% | 49.6% | 0.592 | 0.848 |
+| Decision Tree | 83.6% | 55.9% | 55.9% | 0.559 | 0.736 |
+| Random Forest | 88.1% | 78.1% | 50.4% | 0.612 | 0.866 |
+| **Gradient Boosting** | **87.4%** | **71.1%** | **54.3%** | **0.616** | **0.873** |
 
-*Note: Values will be populated after running the notebook with actual data*
-
-### Best Model: [Model Name]
-- **AUC-ROC**: X.XXX (strong discrimination between classes)
-- **Precision**: XX% (reliable identification of at-risk students)
-- **Recall**: XX% (captures substantial portion of actual dropouts)
+### Best Model: Gradient Boosting
+- **AUC-ROC**: 0.873 (excellent discrimination between dropout and non-dropout students)
+- **Accuracy**: 87.4% (overall correctness)
+- **Precision**: 71.1% (reliable identification of at-risk students)
+- **Recall**: 54.3% (captures over half of actual dropouts for early intervention)
 
 ### Feature Importance (Top 10)
 1. Curricular units 1st semester grade
@@ -179,7 +178,21 @@ Comprehensive evaluation metrics:
 9. Previous qualification grade
 10. Tuition fees up to date
 
-*Full feature importance in notebook outputs*
+*Full feature importance available in `results/feature_importance.csv`*
+
+## 📸 Sample Visualizations
+
+The analysis generates 7 professional visualizations saved in the `visualizations/` directory:
+
+- **Target Distribution** - Class balance visualization
+- **Correlation Heatmap** - Feature relationship analysis
+- **Feature Comparison** - Dropout vs. Non-Dropout distributions
+- **Confusion Matrix** - Model prediction accuracy
+- **ROC Curve** - Model performance visualization (AUC: 0.873)
+- **Model Comparison** - Performance across all algorithms
+- **Feature Importance** - Top 20 predictive features
+
+*View all visualizations in the `visualizations/` folder after running the analysis.*
 
 ## ⚙️ Installation
 
@@ -191,7 +204,7 @@ Comprehensive evaluation metrics:
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/student-dropout-prediction.git
+git clone https://github.com/Abu-249607/student-dropout-prediction.git
 cd student-dropout-prediction
 ```
 
@@ -212,7 +225,24 @@ pip install -r requirements.txt
 
 ## 🚀 Usage
 
-### Option 1: Jupyter Notebook (Recommended for Exploration)
+### Option 1: Automated Analysis (Recommended)
+
+Run the complete analysis pipeline with a single command:
+
+```bash
+python run_analysis.py
+```
+
+This will:
+- Load and preprocess the data
+- Generate 7 professional visualizations
+- Train and compare 4 ML models
+- Save the best model and generate reports
+- Create comprehensive analysis summary
+
+**Output**: All visualizations saved to `visualizations/`, models to `models/`, and reports to `results/`
+
+### Option 2: Jupyter Notebook (Interactive Exploration)
 
 ```bash
 jupyter notebook student_dropout_prediction.ipynb
@@ -225,7 +255,7 @@ Run all cells to:
 - Generate visualizations
 - Save model artifacts
 
-### Option 2: Python Script (Prediction)
+### Option 3: Prediction Script
 
 **Interactive mode** (single student):
 ```bash
@@ -237,7 +267,7 @@ python predict.py --interactive
 python predict.py --student_file data/new_students.csv --output_file predictions.csv
 ```
 
-### Option 3: Use Utility Functions
+### Option 4: Use Utility Functions
 
 ```python
 from utils import load_data, engineer_features, evaluate_model
@@ -261,22 +291,41 @@ model = joblib.load('models/dropout_prediction_model.pkl')
 ```
 student-dropout-prediction/
 │
-├── data/
-│   ├── README.md                   # Data directory documentation
-│   └── Dropout.xlsx                # Dataset (not in repo - add locally)
+├── 📁 data/
+│   ├── README.md                          # Data documentation
+│   └── Dropout.xlsx                       # Dataset (add locally, excluded from git)
 │
-├── models/
-│   ├── dropout_prediction_model.pkl    # Trained model (generated)
-│   ├── feature_scaler.pkl              # Feature scaler (generated)
-│   └── feature_names.pkl               # Feature list (generated)
+├── 📁 models/
+│   ├── README.md                          # Model documentation
+│   ├── dropout_prediction_model.pkl       # Trained model (generated)
+│   ├── feature_scaler.pkl                 # Feature scaler (generated)
+│   ├── feature_names.pkl                  # Feature list (generated)
+│   └── scale_features.pkl                 # Scaling configuration (generated)
 │
-├── student_dropout_prediction.ipynb   # Main analysis notebook
-├── utils.py                           # Helper functions module
-├── predict.py                         # Prediction script
-├── requirements.txt                   # Python dependencies
-├── DATA_DICTIONARY.md                 # Comprehensive data documentation
-├── README.md                          # This file
-└── .gitignore                         # Git ignore rules
+├── 📁 results/
+│   ├── ANALYSIS_REPORT.md                 # Complete analysis summary (generated)
+│   ├── analysis_summary.json              # Machine-readable results (generated)
+│   ├── model_comparison.csv               # Performance metrics (generated)
+│   └── feature_importance.csv             # Feature rankings (generated)
+│
+├── 📁 visualizations/
+│   ├── 01_target_distribution.png         # Generated visualization
+│   ├── 02_correlation_heatmap.png         # Generated visualization
+│   ├── 03_feature_comparison.png          # Generated visualization
+│   ├── 04_confusion_matrix.png            # Generated visualization
+│   ├── 05_roc_curve.png                   # Generated visualization
+│   ├── 06_model_comparison.png            # Generated visualization
+│   └── 07_feature_importance.png          # Generated visualization
+│
+├── 📓 student_dropout_prediction.ipynb    # Jupyter notebook analysis
+├── 🐍 run_analysis.py                     # Automated analysis script
+├── 🐍 utils.py                            # Helper functions module
+├── 🐍 predict.py                          # Prediction script
+├── 📋 requirements.txt                    # Python dependencies
+├── 📖 DATA_DICTIONARY.md                  # Feature documentation
+├── 📖 README.md                           # This file
+├── 📄 LICENSE                             # MIT License
+└── 🚫 .gitignore                          # Git ignore rules
 ```
 
 ## 📊 Model Performance
